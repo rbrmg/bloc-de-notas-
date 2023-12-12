@@ -46,3 +46,4 @@ const main = async () => {
 };
 // Ejecutamos la función anterior.
 main();
+console.log('tablas creadas')
