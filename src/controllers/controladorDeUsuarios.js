@@ -1,4 +1,6 @@
-//falta para un 2.0 los imports
+//FALTA PARA UN 2.0 LOS IMPORTS
+//import joi from 'joi';
+//import joiMsg from './creacionyLoguinDeUsuario.js'
 
 // Función para cambiar la contraseña de un usuario
 export const editUserPassword = async (email, recoverPassCode, newPass) => {
