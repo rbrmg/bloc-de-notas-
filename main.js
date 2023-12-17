@@ -3,6 +3,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
+import { validateNewUser } from "./middlewares/validationMiddleware"; // Asegúrate de importar el middleware
+
 dotenv.config();
 
 // voy a leer el puerto en .env
@@ -79,13 +81,14 @@ app.put("/notes", (req, res) => {
   });
 });
 
-app.get("/notes", (req, res)=>{
-  console.log(req.query)
+app.get("/notes", (req, res) => {
+  console.log(req.query);
   res.status(200).send({
-    status:"ok",
-    message:"Listado notas",
-    data: []
-  })})
+    status: "ok",
+    message: "Listado notas",
+    data: [],
+  });
+});
 
 app.use((req, res) => {
   res.status(404).send({
@@ -94,6 +97,13 @@ app.use((req, res) => {
   });
 });
 
+app.post("/register", validateNewUser, (req, res) => {
+  // Este código solo se ejecutará si la validación es exitosa
+  res.status(201).send({
+    status: "ok",
+    message: "Usuario creado",
+  });
+});
 
 app.listen(PORT, () => {
   console.log("Server running on port 3000: http://localhost:" + PORT);
