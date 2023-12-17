@@ -43,5 +43,5 @@ const getPool = async () => {
   }
 };
 
-//exportamos la función getPool para usar en otros archivos.
+//exportamos la función getPool para usar en otros archivos.(models, node controllers, node categories, main.js)
 export default getPool;

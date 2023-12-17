@@ -2,7 +2,7 @@ import joi from 'joi';
 import joiMsg from './definicionDeMensajesDeError.js'
 
 
-//esto crea un usario nuevo 
+//Creamos un usario nuevo 
 const newUserSchema = joi.object({
     username: joi.string()
                     .min(3)
@@ -18,7 +18,7 @@ const newUserSchema = joi.object({
 });
 
 
-//esto loguea un usuario 
+//Logueamos un usuario 
 const loginUserSchema = joi.object({
     password: joi.string()
     .pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[¡!$%^&*()_+|~=`{}:";'<>¿?,.])[a-zA-Z0-9¡!$%^&*()_+|~=`{}:";'<>¿?,.]{8,}$/)

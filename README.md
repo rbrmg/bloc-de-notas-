@@ -19,6 +19,8 @@ API de un bloc de notas con registro de usuarios y categorias de notas.
 
 6) Desarrollo de la BD ("getpool.js y initDb.js")
 
+7) Desarrollo de controllers ()
+
 **FALTA COMPLETAR**
 
 7) Creación de endpoints en Postman, (JSON incluido en el repositorio "blockDeNotas.postan_collection.son")
