@@ -4,18 +4,19 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-//usuario
+//Usuario (viene de .env)
 const { MYSQL_HOST, MYSQL_USER, MYSQL_PASS, MYSQL_DB } = process.env;
 
-//creamos peticion de conexiones
+//Creamos petición de conexiones
 let pool;
 
+// Al llamar a la función getPool, si no existe un pool todavía, crea uno y nos los da. Si ya existe, nos los da automaticamente.
 const getPool = async () => {
-  //establecemos captura en caso de error de conexiones
+  //Establecemos captura en caso de error de conexiones
   try {
     if (!pool) {
       console.log(MYSQL_PASS);
-      //Crear pool temporal para dar de alta la Base si es que no existe
+      //Creamos pool temporal para dar de alta la Base si es que no existe
       const poolTemp = mysql.createPool({
         host: MYSQL_HOST, //envio el host para la conexión
         user: MYSQL_USER, //envio el user
@@ -35,12 +36,12 @@ const getPool = async () => {
       });
     }
 
-    //retorno el pool de conexiones
+    //retornamos el pool de conexiones
     return pool;
   } catch (err) {
     console.error(err);
   }
 };
 
-//exporto la funcion getPool para usar en otros archivos.
+//exportamos la función getPool para usar en otros archivos.
 export default getPool;

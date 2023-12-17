@@ -1,5 +1,7 @@
 import getPool from "./getpool.js";
 
+
+// Función crea de cero la DB y sus tablas
 const main = async () => {
   // Variable que almacenará una conexión con la base de datos.
   let pool;
@@ -7,13 +9,28 @@ const main = async () => {
   try {
     pool = await getPool();
 
+    //FALTA BORRAR Y CREAR LA DB
+
+    /*console.log('Dropping database...');
+
+    await pool.query(`DROP DATABASE IF EXISTS ${DATABASE_NAME};`);
+
+    console.log('Creating database...');
+
+    await pool.query(`CREATE DATABASE ${DATABASE_NAME};`);
+
+    await pool.query(`USE ${DATABASE_NAME};`);
+
+    console.log('Database created');*/
+
+    //Borramos y creamos las tablas
     console.log("Borrando tablas...");
 
     await pool.query("DROP TABLE IF EXISTS notas, categorias, users");
 
     console.log("Creando tablas...");
 
-    //Creamos la tabla de usuarios.
+    //Creamos tabla de usuarios.
     await pool.query(`
             CREATE TABLE IF NOT EXISTS users (
             id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -24,7 +41,7 @@ const main = async () => {
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP NOT NULL
         )
     `);
-
+    //Creamos tabla de categorias.
     await pool.query(`
         CREATE TABLE IF NOT EXISTS categorias (
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -33,7 +50,7 @@ const main = async () => {
 )
 `);
 
-    //Creamos la tabla de notas.
+    //Creamos tabla de notas.
     await pool.query(`
             CREATE TABLE IF NOT EXISTS notas (
             id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -49,13 +66,25 @@ const main = async () => {
 
     console.log("¡Tablas creadas!");
 
+    //Insertamos categorias en su tabla
     await pool.query(`
     INSERT INTO categorias(name)
     VALUES 
-       ("v1"),
-       ("v2");
+       ("Arte"),
+       ("Ciencia"),
+       ("Cultura"),
+       ("Fotografía"),
+       ("Gastronomía"),
+       ("Idiomas"),
+       ("Música"),
+       ("Naturaleza"),
+       ("Tecnología"),
+       ("Otras");
+       ;
         `);
     console.log("Categorias creadas!");
+    //Aviso de Final de proceso de creación de la BD.
+    console.log("¡Base de Datos completa!✅");
   } catch (err) {
     console.error(err);
   } finally {
