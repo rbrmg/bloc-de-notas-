@@ -1,4 +1,4 @@
-//falta para un 2.0 los imports
+o;
 
 // Función para cambiar la contraseña de un usuario
 export const editUserPassword = async (email, recoverPassCode, newPass) => {
