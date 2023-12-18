@@ -1,4 +1,4 @@
-import getPool from "./getpool.js";
+import getPool from "../getpool.js";
 
 
 // Función crea de cero la DB y sus tablas

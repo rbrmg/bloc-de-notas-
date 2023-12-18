@@ -14,4 +14,5 @@ const handleError = (error, req, res, next) => {
     .send({ status: 'error', message: error.message });
 };
 
+//Exportamos middleware para usar en otros archivos()
 module.exports = handleError;
