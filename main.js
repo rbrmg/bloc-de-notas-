@@ -1,3 +1,4 @@
+// cambios a ver si funciona p
 //cuidado con el import de express (creo que esta inoperativo)
 import express from "express";
 import dotenv from "dotenv";
@@ -104,6 +105,19 @@ app.post("/register", validateNewUser, (req, res) => {
     message: "Usuario creado",
   });
 });
+
+//definir ruta para eliminar nota
+app.delete("/notes/:noteId", removeNote);
+
+// Definir rutas para categorías
+//obtiener
+app.get("/categories", getCategories);
+//crear
+app.post("/categories", addCategory);
+//modificar
+app.put("/categories/:categoryId", editCategory);
+//borrar
+app.delete("/categories/:categoryId", removeCategory);
 
 app.listen(PORT, () => {
   console.log("Server running on port 3000: http://localhost:" + PORT);
