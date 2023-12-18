@@ -18,5 +18,5 @@ const validateAuth = (req, res, next) => {
   }
 };
 
-//Exportamos para usar en otros archivos()
+//Exportamos para usar en otros archivos(main.js,)
 module.exports = validateAuth;

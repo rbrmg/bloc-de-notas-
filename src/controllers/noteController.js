@@ -68,5 +68,5 @@ const removeNote = async (req, res) => {
   }
 };
 
-// Exportamos las funciones para su uso en las rutas
+// Exportamos las funciones para su uso en las rutas()
 export { getNotes, addNote, editNote, removeNote };
