@@ -73,13 +73,13 @@ const main = async () => {
        ("Arte"),
        ("Ciencia"),
        ("Cultura"),
-       ("Fotografía"),
+       ("Deportes"),
        ("Gastronomía"),
        ("Idiomas"),
        ("Música"),
        ("Naturaleza"),
        ("Tecnología"),
-       ("Otras");
+       ("Otros");
        ;
         `);
     console.log("Categorias creadas!");
