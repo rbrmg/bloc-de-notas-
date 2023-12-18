@@ -1,3 +1,4 @@
+//Importamos getPool (Pool de conexiones)
 import getPool from "../getpool.js";
 
 
@@ -36,7 +37,7 @@ const main = async () => {
             id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
             email VARCHAR(100) UNIQUE NOT NULL,
             password VARCHAR(100) NOT NULL,
-            userName VARCHAR(15) NOT NULL,                                                                                                                                                                                                             
+            userName VARCHAR(15) NOT NULL,                               
             createdAt DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
             modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP NOT NULL
         )
@@ -83,7 +84,7 @@ const main = async () => {
        ;
         `);
     console.log("Categorias creadas!");
-    //Aviso de Final de proceso de creación de la BD.
+    //Avisamos de Final de proceso de creación de la BD.
     console.log("¡Base de Datos completa!✅");
   } catch (err) {
     console.error(err);

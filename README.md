@@ -85,3 +85,4 @@ API de un bloc de notas con registro de usuarios y categorias de notas.
   1) GET /notas/:id (devuelve el dettalle de la nota con id=id req.params)
 
   
+11) Utilizamos node main.js para ejecutar la aplicacion
