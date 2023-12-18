@@ -27,6 +27,6 @@ const loginUserSchema = joi.object({
     email: joi.string().required().messages(joiMsg.errorMsg)
 });
 
-
+//Exportamos (a "").
 export default{newUserSchema,
     loginUserSchema}; 

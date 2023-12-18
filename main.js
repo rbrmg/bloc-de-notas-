@@ -14,6 +14,7 @@ const { PORT } = process.env;
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(routes);
 
 app.post("/register", (req, res) => {
   res.status(201).send({
@@ -105,18 +106,33 @@ app.post("/register", validateNewUser, (req, res) => {
   });
 });
 
-//definir ruta para eliminar nota
-app.delete("/notes/:noteId", removeNote);
+//ENDPOINTS
 
-// Definir rutas para categorías
-//obtiener
-app.get("/categories", getCategories);
-//crear
-app.post("/categories", addCategory);
-//modificar
-app.put("/categories/:categoryId", editCategory);
-//borrar
-app.delete("/categories/:categoryId", removeCategory);
+/*USUARIO*/
+app.post()//Registro usuario
+app.post()//Login usuario
+
+/*NOTAS*/
+app.post()//Creamos la nota
+app.put()//Modificamos la nota
+app.delete("/notes/:noteId", removeNote);//Definimos ruta para eliminar nota
+
+/*CONSULTAS*/
+app.get()//Buscamos categoria por id
+app.get()//Buscamos notas por categoria
+app.get()//Buscamos notas por palabra / categoria
+app.get()//Buscamos detalle de la nota con id = id
+
+// Definimos rutas para categorías
+app.get("/categories", getCategories); //Obtener listado categorias
+app.post("/categories", addCategory); //Crear categoria
+app.put("/categories/:categoryId", editCategory); //Editar categoria
+app.delete("/categories/:categoryId", removeCategory); //Borrar categoria
+
+
+
+
+
 
 app.listen(PORT, () => {
   console.log("Server running on port 3000: http://localhost:" + PORT);
