@@ -4,7 +4,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
-import { validateNewUser } from "./middlewares/validationMiddleware"; // Asegúrate de importar el middleware
+import { validateNewUser } from "./src/middleware/validacionDeUsuario.js";
 
 dotenv.config();
 
@@ -106,8 +106,8 @@ app.post("/register", validateNewUser, (req, res) => {
   });
 });
 
-//definir ruta para eliminar nota
-app.delete("/notes/:noteId", removeNote);
+/* //definir ruta para eliminar nota
+//node main js app.delete("/notes/:noteId", removeNote);
 
 // Definir rutas para categorías
 //obtiener
@@ -117,7 +117,7 @@ app.post("/categories", addCategory);
 //modificar
 app.put("/categories/:categoryId", editCategory);
 //borrar
-app.delete("/categories/:categoryId", removeCategory);
+app.delete("/categories/:categoryId", removeCategory); */
 
 app.listen(PORT, () => {
   console.log("Server running on port 3000: http://localhost:" + PORT);
