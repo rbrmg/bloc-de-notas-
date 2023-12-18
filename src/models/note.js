@@ -37,4 +37,5 @@ const deleteNote = async (noteId) => {
   await pool.query("DELETE FROM notas WHERE id = ?", [noteId]);
 };
 
+//Exportamos las funciones para usar en otros archivos ()
 export { getNotesByUserId, createNote, updateNote, deleteNote };
