@@ -5,8 +5,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 import routes from './src/routes/index.routes.js';
 
-import { validateNewUser } from "./middlewares/validationMiddleware"; // Asegúrate de importar el middleware
-
 dotenv.config();
 
 // voy a leer el puerto en .env
@@ -17,89 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.post("/register", (req, res) => {
-  res.status(201).send({
-    status: "ok",
-    message: "Usuario creado",
-  });
-});
 
-app.post("/login", (req, res) => {
-  res.status(201).send({
-    status: "ok",
-    message: "Login",
-    data: {
-      token: "dfsgdrfgsdf",
-    },
-  });
-});
-
-app.get("/categories", (req, res) => {
-  res.status(200).send({
-    status: "ok",
-    message: "Listado categorias",
-    data: {
-      categories: [
-        { id: 1, name: "Arte" },
-        { id: 2, name: "Ciencia" },
-        { id: 3, name: "Cultura" },
-        { id: 4, name: "Deportes" },
-        { id: 5, name: "Gastronomía" },
-        { id: 6, name: "Idiomas" },
-        { id: 7, name: "Música" },
-        { id: 8, name: "Naturaleza" },
-        { id: 9, name: "Tecnología" },
-        { id: 10, name: "Otros" },
-       
-      ],
-    },
-  });
-});
-
-app.get("/notes/:id", (req, res) => {
-  res.status(200).send({
-    status: "ok",
-    message: "Detalle nota",
-    data: {
-      id: req.params.id,
-    },
-  });
-});
-
-app.post("/notes", (req, res) => {
-  res.status(201).send({
-    status: "ok",
-    message: "Nota creada",
-    data: {
-      id: "1",
-      title: req.body.title,
-      text: req.body.text,
-      categoriaId: req.body.categoriaId,
-    },
-  });
-});
-
-app.put("/notes", (req, res) => {
-  res.status(200).send({
-    status: "ok",
-    message: "Nota modificada",
-    data: {
-      id: "1",
-      title: req.body.title,
-      text: req.body.text,
-      categoriaId: req.body.categoriaId,
-    },
-  });
-});
-
-app.get("/notes", (req, res) => {
-  console.log(req.query);
-  res.status(200).send({
-    status: "ok",
-    message: "Listado notas",
-    data: [],
-  });
-});
 
 app.use((req, res) => {
   res.status(404).send({
@@ -108,42 +24,13 @@ app.use((req, res) => {
   });
 });
 
-app.post("/register", validateNewUser, (req, res) => {
-  // Este código solo se ejecutará si la validación es exitosa
-  res.status(201).send({
-    status: "ok",
-    message: "Usuario creado",
-  });
-});
-
-//ENDPOINTS
-
-/*USUARIO*/
-app.post()//Registro usuario
-app.post()//Login usuario
-
-/*NOTAS*/
-app.post()//Creamos la nota
-app.put()//Modificamos la nota
-app.delete("/notes/:noteId", removeNote);//Definimos ruta para eliminar nota
-
-/*CONSULTAS*/
-app.get()//Buscamos categoria por id
-app.get()//Buscamos notas por categoria
-app.get()//Buscamos notas por palabra / categoria
-app.get()//Buscamos detalle de la nota con id = id
-
-// Definimos rutas para categorías
-app.get("/categories", getCategories); //Obtener listado categorias
-app.post("/categories", addCategory); //Crear categoria
-app.put("/categories/:categoryId", editCategory); //Editar categoria
-app.delete("/categories/:categoryId", removeCategory); //Borrar categoria
-
-
-
-
-
+app.use((error, req, res, next)=>{
+  res.status(500).send({
+    status:"error",
+    message: error.message
+  })
+})
 
 app.listen(PORT, () => {
-  console.log("Server running on port 3000: http://localhost:" + PORT);
+  console.log(`Server running on port 3000: http://localhost:${PORT}`);
 });

@@ -1,52 +1,59 @@
 import express from 'express'
-
-import {
-  authUser,
-  userExists,
-  newEntry,
-  entryExists,
-  canEdit,
-  addPhoto,
-  deletePhoto,
-  voteEntry
-} from '../middlewares/index.middleware.js'
+import { getCategoriesController } from '../controllers/noteController.js';
 
 const router = express.Router()
 
-//Ruta para nueva publicacion
-router.post('/entries', authUser, userExists, newEntry)
 
-//Ruta para agregar foto
-router.post(
-  '/entries/:entryId/photos',
-  authUser,
-  userExists,
-  entryExists,
-  canEdit,
-  addPhoto
-)
 
-//Ruta para eliminar una foto
-router.delete(
-  '/entries/:entryId/photos/:photoId',
-  authUser,
-  userExists,
-  entryExists,
-  canEdit,
-  deletePhoto
-)
+router.get("/categories", getCategoriesController );
 
-//Ruta para dar Like
-router.post(
-  '/entries/:entryId/votes',
-  authUser,
-  userExists,
-  entryExists,
-  voteEntry
-)
+router.get("/notes/:id", (req, res) => {
+  // aqui me connecto al DB
+  res.status(200).send({
+    status: "ok",
+    message: "Detalle nota",
+    data: {
+      id: req.params.id,
+    },
+  });
+});
 
-//Ruta para obtener listado de publiciones AUTHENTCADO!!! No necesario validar usuario existente
+router.post("/notes", (req, res) => {
+  // aqui me connecto al DB
+  res.status(201).send({
+    status: "ok",
+    message: "Nota creada",
+    data: {
+      id: "1",
+      title: req.body.title,
+      text: req.body.text,
+      categoriaId: req.body.categoriaId,
+    },
+  });
+});
 
-//Ruta para obtener una publicacion AUTENTICADO!!! Y validar que la entrada exista, No necesario validar usuario existente
+router.put("/notes", (req, res) => {
+  // aqui me connecto al DB
+  res.status(200).send({
+    status: "ok",
+    message: "Nota modificada",
+    data: {
+      id: "1",
+      title: req.body.title,
+      text: req.body.text,
+      categoriaId: req.body.categoriaId,
+    },
+  });
+});
+
+router.get("/notes", (req, res) => {
+  // aqui me connecto al DB
+  console.log(req.query);
+  res.status(200).send({
+    status: "ok",
+    message: "Listado notas",
+    data: [],
+  });
+});
 
 export default router
