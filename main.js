@@ -3,6 +3,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import routes from './src/routes/index.routes.js';
 
 import { validateNewUser } from "./middlewares/validationMiddleware"; // Asegúrate de importar el middleware
 
@@ -39,8 +40,17 @@ app.get("/categories", (req, res) => {
     message: "Listado categorias",
     data: {
       categories: [
-        { id: 1, name: "deporte" },
-        { id: 2, name: "personal" },
+        { id: 1, name: "Arte" },
+        { id: 2, name: "Ciencia" },
+        { id: 3, name: "Cultura" },
+        { id: 4, name: "Deportes" },
+        { id: 5, name: "Gastronomía" },
+        { id: 6, name: "Idiomas" },
+        { id: 7, name: "Música" },
+        { id: 8, name: "Naturaleza" },
+        { id: 9, name: "Tecnología" },
+        { id: 10, name: "Otros" },
+       
       ],
     },
   });

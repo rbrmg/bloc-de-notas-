@@ -1,5 +1,3 @@
-
-//Aplicamos condiciones para el usuario y la contraseña.
 const errorMsg = {
     'any.required': 'El campo "{#key}" es requerido',
     'string.base': 'El valor de "{#key}" debe ser una cadena',
@@ -25,7 +23,6 @@ const errorMsgPassword = {
         'La contraseña debe contener al menos una mayúscula, una minúscula, un número y un símbolo de puntuación para "{#key}"',
 };
 
-//Exportamos (a "creacionyLoguinDeUsuario.js").
 export default {
     errorMsg,
     errorMsgUsername,
