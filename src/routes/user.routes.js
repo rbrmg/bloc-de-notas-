@@ -1,26 +1,10 @@
 import express from 'express'
-import {
-  newUser,
-  validateUser,
-  loginUser,
-  authUser,
-  userExists,
-  getOwnUser,
-  getUserProfile,
-  editUserAvatar,
-  passwordRecover,
-  editUserPassword
-} from '../middlewares/index.middleware.js'
+import {loginController, registerController} from "../controllers/userControllers.js"
 
 const router = express.Router()
 
-router.post('/users/register', newUser)
-router.get('/users/validate/:registrationCode', validateUser)
-router.post('/users/login', loginUser)
-router.get('/users', authUser, userExists, getOwnUser)
-router.get('/users/:userId', userExists, getUserProfile)
-router.put('/users/avatar', authUser, userExists, editUserAvatar)
-router.post('/users/password/recover', passwordRecover)
-router.put('/users/password', editUserPassword)
+router.post("/register", loginController);
+
+router.post("/login", registerController);
 
 export default router

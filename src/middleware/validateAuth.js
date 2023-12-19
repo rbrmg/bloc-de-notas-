@@ -1,5 +1,5 @@
 //validacion del jsonwebtoken, proteccion de la ruta.FALTA REVISION
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 const validateAuth = (req, res, next) => {
   try {
@@ -19,4 +19,4 @@ const validateAuth = (req, res, next) => {
 };
 
 //Exportamos para usar en otros archivos(main.js,)
-module.exports = validateAuth;
+export default validateAuth;
