@@ -9,20 +9,6 @@ const main = async () => {
   try {
     pool = await getPool();
 
-    //FALTA BORRAR Y CREAR LA DB
-
-    /*console.log('Dropping database...');
-
-    await pool.query(`DROP DATABASE IF EXISTS ${DATABASE_NAME};`);
-
-    console.log('Creating database...');
-
-    await pool.query(`CREATE DATABASE ${DATABASE_NAME};`);
-
-    await pool.query(`USE ${DATABASE_NAME};`);
-
-    console.log('Database created');*/
-
     //Borramos y creamos las tablas
     console.log("Borrando tablas...");
 
