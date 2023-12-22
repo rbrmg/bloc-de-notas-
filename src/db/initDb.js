@@ -1,3 +1,6 @@
+//Módulo de creación de la bd
+
+//Importamos pool de conexiones
 import getPool from "./getpool.js";
 
 
@@ -11,9 +14,7 @@ const main = async () => {
 
     //Borramos y creamos las tablas
     console.log("Borrando tablas...");
-
     await pool.query("DROP TABLE IF EXISTS notas, categorias, users");
-
     console.log("Creando tablas...");
 
     //Creamos tabla de usuarios.
@@ -22,29 +23,30 @@ const main = async () => {
             id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
             email VARCHAR(100) UNIQUE NOT NULL,
             password VARCHAR(100) NOT NULL,
-            userName VARCHAR(15) NOT NULL,                                                                                                                                                                                                             
-            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
-            modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP NOT NULL
+            userName VARCHAR(15) NOT NULL,                                   
+            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+            modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP
         )
     `);
     //Creamos tabla de categorias.
     await pool.query(`
         CREATE TABLE IF NOT EXISTS categorias (
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(50) NOT NULL,
-        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+        name VARCHAR(50) UNIQUE NOT NULL,
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP 
 )
 `);
-
     //Creamos tabla de notas.
     await pool.query(`
             CREATE TABLE IF NOT EXISTS notas (
             id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
             title VARCHAR(50) NOT NULL,
+            detail TEXT,
             text TEXT NOT NULL,
-            categoriaId  INT UNSIGNED,
-            userId  INT UNSIGNED,
-            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+            categoriaId  INT UNSIGNED NOT NULL,
+            userId INT UNSIGNED NOT NULL,
+            createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+            modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP,
             FOREIGN KEY (userId) REFERENCES users(id),
             FOREIGN KEY (categoriaId) REFERENCES categorias(id)
         )

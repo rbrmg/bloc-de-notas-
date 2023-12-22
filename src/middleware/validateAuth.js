@@ -1,4 +1,5 @@
-//validacion del jsonwebtoken, proteccion de la ruta.FALTA REVISION
+//Módulo de validacion del jsonwebtoken, proteccion de la ruta.
+
 import jwt from 'jsonwebtoken';
 
 const validateAuth = (req, res, next) => {
@@ -18,5 +19,5 @@ const validateAuth = (req, res, next) => {
   }
 };
 
-//Exportamos para usar en otros archivos(main.js,)
+//Exportamos para usar en otros archivos(main.js)
 export default validateAuth;

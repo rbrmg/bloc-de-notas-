@@ -1,18 +1,12 @@
-'use strict';
+//Módulo principal del proyecto
 
-import dotenv from "dotenv";
-dotenv.config();
-
+//Importamos módulos (externos para funcionamiento y propios)
 import express from "express";
 import cors from "cors";
 import routes from './src/routes/index.routes.js';
+import dotenv from "dotenv";
 
-//Import de los endpoint(LO TRAE ROUTES "?")
-/*
-import {loginController, registerController,} from './src/controllers/userControllers.js';
-import{ getCategoriesController} from './src/controllers/noteController.js';
-*/
-
+dotenv.config();
 // voy a leer el puerto en .env
 const { PORT } = process.env;
 
@@ -36,17 +30,9 @@ app.use((error, req, res, next)=>{
   })
 })
 
+//Aviso de server funcionando y su puerto
 app.listen(PORT, () => {
   console.log(`Server running on port 3000: http://localhost:${PORT}`);
 });
 
 
-//pasos import de los endoints
-/*
-  1) USUARIOS: login y register ✅
-  2) CATEGORIAS: obtener todas ✅
-  3) BUSQUEDA NOTAS:(4) ?
-  4) NOTA: crearla ✅
-  5) NOTA: obtener detalle ✅
-  6) NOTA: modificarla ✅
-*/
