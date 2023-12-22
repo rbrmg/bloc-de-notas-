@@ -1,3 +1,5 @@
+//Módulo de Pool de conexiones 
+
 //importamos mysql y variables de entorno
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
@@ -43,5 +45,5 @@ const getPool = async () => {
   }
 };
 
-//exportamos la función getPool para usar en otros archivos.(models, node controllers, node categories, main.js)
+//Exportamos función para usar en otros archivos.(models, node controllers, node categories, main.js)
 export default getPool;
