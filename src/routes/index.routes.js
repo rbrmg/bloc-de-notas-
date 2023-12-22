@@ -7,3 +7,5 @@ router.use(userRoutes);
 router.use(entriesRoutes);
 
 export default router;
+
+
