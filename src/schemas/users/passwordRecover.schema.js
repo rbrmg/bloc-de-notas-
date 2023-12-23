@@ -1,3 +1,6 @@
+//MÓDULO PARA VALIDAR CONTRASEÑA
+
+//Importamos joi (validacion y errores personalizados)
 import joi from 'joi';
 import joiMsg from '../joi.error.messages.js';
 

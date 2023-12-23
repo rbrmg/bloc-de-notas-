@@ -1,3 +1,5 @@
+//MÓDULO DE MENSAJES PERSONALIDAZOS ERROR 
+
 const errorMsg = {
     'any.required': 'El campo "{#key}" es requerido',
     'string.base': 'El valor de "{#key}" debe ser una cadena',

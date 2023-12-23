@@ -1,8 +1,7 @@
-//Módulo de creación de la bd
+//MÓDULO DE CREACIÓN DE LA BD EN MySQL 
 
 //Importamos pool de conexiones
-import getPool from "./getpool.js";
-
+import getPool from "./getPool.js";
 
 // Función crea de cero la DB y sus tablas
 const main = async () => {
@@ -33,7 +32,8 @@ const main = async () => {
         CREATE TABLE IF NOT EXISTS categorias (
         id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
         name VARCHAR(50) UNIQUE NOT NULL,
-        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP 
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+        modifiedAt DATETIME ON UPDATE CURRENT_TIMESTAMP 
 )
 `);
     //Creamos tabla de notas.
@@ -70,11 +70,12 @@ const main = async () => {
        ("Otros");
        ;
         `);
+
     console.log("Categorias creadas!");
     //Aviso de Final de proceso de creación de la BD.
     console.log("¡Base de Datos completa!✅");
   } catch (err) {
-    console.error(err);
+    console.error("Error al configurar la base de datos:",err);
   } finally {
     // cerramos el proceso.
     process.exit();

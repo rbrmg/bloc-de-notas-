@@ -1,3 +1,6 @@
+//MÓDULO DE VALIDACIÓN DE IMÁGENES
+
+//Importamos joi (validacion y errores personalizados)
 import joi from 'joi';
 import joiErrorMessages from './joi.error.messages.js';
 
