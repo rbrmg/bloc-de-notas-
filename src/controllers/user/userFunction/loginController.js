@@ -1,18 +1,18 @@
 //Módulo de funcionamiento logueo de usuario
 
 // Importamos las funciones del usuario.
-import pool from '../db/getPool.js'; 
-//import validateAuth from '../middleware/validateAuth.js';
+import pool from '../db/getPool.js';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
 
-//Función logueamos el usuario
-const jwt = require('jsonwebtoken'); 
+dotenv.config();
 
 const loginController = (req, res) => {
   // Extraemos datos del cuerpo de la solicitud
   const { email, password } = req.body;
 
-  // Validamos que proporciono los campos necesarios
+  // Validamos que se proporcionen ambos campos: email y password
   if (!email || !password) {
     return res.status(400).send({
       status: 'error',
@@ -20,11 +20,11 @@ const loginController = (req, res) => {
     });
   }
 
-  // Verificamos las credenciales contra la bd
+  // Consultamos la base de datos para obtener el usuario por su email
   pool.query(
-    'SELECT * FROM users WHERE email = ? AND password = ?', // ¡CUIDADO GESTIONAR GUARDADO CONTRASEÑAS!
-    [email, password],
-    (error, results) => {
+    'SELECT * FROM users WHERE email = ?',
+    [email],
+    async (error, results) => {
       if (error) {
         console.error('Error al iniciar sesión:', error);
         return res.status(500).send({
@@ -33,27 +33,40 @@ const loginController = (req, res) => {
         });
       }
 
+      // Si se encontró un usuario con el email proporcionado
       if (results && results.length > 0) {
-        // Generamos token de autenticación 
-        const token = jwt.sign({ userId: results[0].id }, 'YOUR_SECRET_KEY', { expiresIn: '1h' });
-
-        // Devolvemos token y detalles del usuario
-        res.status(200).send({
-          status: 'ok',
-          message: 'Inicio de sesión exitoso.',
-          token: token,
-          userId: results[0].id,
-          userName: results[0].userName
-        });
-      } else {
-        res.status(401).send({
-          status: 'error',
-          message: 'Credenciales incorrectas.'
-        });
+        const user = results[0];
+        
+        // Verificamos si la contraseña proporcionada coincide con la almacenada (usando bcrypt)
+        const validPassword = await bcrypt.compare(password, user.password);
+        
+        if (validPassword) {
+          // Generamos un token JWT para el usuario autenticado
+          const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+          
+          return res.status(200).send({
+            status: 'ok',
+            message: 'Inicio de sesión exitoso.',
+            token,
+            userId: user.id,
+            userName: user.userName
+          });
+        }
       }
+
+      // Si no se encontró un usuario o la contraseña no coincide
+      res.status(401).send({
+        status: 'error',
+        message: 'Credenciales incorrectas.'
+      });
     }
   );
 };
+//exportamos funciones a rutas ( indexUserController.js, ira a user.routers.js)
+export { loginController };
+
+
+
 /*const loginController = (req, res) => {
   // aqui me connecto al DB
   res.status(201).send({
@@ -65,5 +78,4 @@ const loginController = (req, res) => {
   });
 };*/
 
-//exportamos funciones a rutas ( indexUserController.js, ira a user.routers.js)
-export { loginController };
+
