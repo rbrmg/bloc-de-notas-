@@ -15,7 +15,7 @@ Hemos desarrollado una aplicación para almacenar notas de texto tipo bloc.
 
 1. Creamos repositorio en github. 
 
-2. Clonamos repositorio de github en una carpeta nueva en el pc (app-notas-texto).
+2. Clonamos repositorio de github en una carpeta nueva en el pc (app-notas-texto) con el comando .
    
 3. Iniciamos proyecto con el comando `npm init -y`.
    
@@ -41,7 +41,7 @@ Hemos desarrollado una aplicación para almacenar notas de texto tipo bloc.
 
 14. Creamos middleware de manejo de errores en middleware/`errorHandler.js` 
 
-15.Creamos helpers.
+15. Creamos helpers.
 
 16. Creamos schemas para validaciones de datos. 
 

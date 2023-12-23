@@ -1,15 +1,15 @@
 //MÓDULO PRINCIPAL DE LA APP DE NOTAS
 
-// Importaciones de dependencias y módulos propios
+// Importaciones de dependencias 
 import express from 'express';
 import cors from "cors";
 import dotenv from 'dotenv';
 
-//Propios
-import validateAuth from './middleware/validateAuth';
-import errorHandler from './middleware/errorHandler';
-import validateHelper from './src/helpers/validate.helper'
-import router from './src/routes/index.routes.js'; // Importamos rutas
+//Importaciones de módulos propios
+import validateAuth from './src/middleware/validateAuth.js'; //Validación del JWT
+import errorHandler from '../app-notas-texto/src/middleware/errorHandler.js'; //Gestión de errores
+import validateHelper from './src/helpers/validate.helper.js' // Gestión de errores
+import router from './src/routes/index.routes.js'; // Endpoints
 import {
     newUserSchema,
     editUserPasswordSchema,
@@ -22,7 +22,7 @@ import {
     errorMsg,
     errorMsgUsername,
     errorMsgPassword
-  } from './schemas';
+  } from './schemas';//Esquemas
   
 dotenv.config(); //Configuración de variables de entorno
 

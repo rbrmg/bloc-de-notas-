@@ -1,8 +1,9 @@
 # MÓDULO DE OCULTACIÓN DE ARCHIVOS
 
 # Ignorar directorios
-node_modules/
+
 public/assets/
+node_modules
 
 # Ignorar archivos específicos
 .env
