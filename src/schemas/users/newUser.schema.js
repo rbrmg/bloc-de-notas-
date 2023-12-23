@@ -1,3 +1,6 @@
+//MÓDULO DE VALIDACION DE REGISTRO
+
+//Importamos joi (validacion y errores personalizados)
 import joi from 'joi';
 import joiMsg from '../joi.error.messages.js';
 

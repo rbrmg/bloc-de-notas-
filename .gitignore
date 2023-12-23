@@ -1,2 +1,9 @@
-node_modules
+# MÓDULO DE OCULTACIÓN DE ARCHIVOS
+
+# Ignorar directorios
+node_modules/
+public/assets/
+
+# Ignorar archivos específicos
 .env
+*.log

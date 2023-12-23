@@ -1,38 +1,58 @@
-# bloc-de-notas-
-
+# APP DE NOTAS DE TEXTO
 
 ## DESCRIPCIÓN
+Hemos desarrollado una aplicación para almacenar notas de texto tipo bloc.
 
-API de un bloc de notas con registro de usuarios y categorias de notas.
 
-### PASOS SEGUIDOS
+## CARACTERÍSTICAS
 
-1) Al inicar proyecto hacer npm init -y para instalar dependencias.
+- Registro y login de usuarios.
+- Creación, modificación y eliminación de notas.
+- Categorización de notas.
+  
 
-2) Instalación dependencias (Dotem, Express..).
+## PASOS DEL DESARROLLO
 
-3) Creación de modulos, .env, .env.copy y .gitignore (Ocultación del .env).
+1. Creamos repositorio en github. 
 
-4) Creación y distribución de carpetas.
-
-5) Creación de módulos, (principal "main.js").
-
-6) Gestión de errores (FALTA REVISIÓN)
-
-7) Desarrollo de la BD ("getpool.js y initDb.js")
-
-8) Desarrollo de schemas (todos los módulos) 
-
-9) Desarrollo de middleware (jsonwebtoken)
- 
-10) Desarrollo de controllers (funciones)
-
-11) Desarrollo de Endpoints (o Rutas) 
-
-12) Configuración de endpoints en Postman (JSON incluido en el repositorio "blockDeNotas.postan_collection.son")
-
-13) Comprobaciones de la app
+2. Clonamos repositorio de github en una carpeta nueva en el pc (app-notas-texto).
    
+3. Iniciamos proyecto con el comando `npm init -y`.
+   
+4. Instalamos dependencias con `npm install` ( + `express, mysql2, jsonwebtoken, dotenv, joi, bcryptjs`).
+   
+5. Creamos modulo README.md con `touch README.md` (Descripción app).
+
+6. Creamos estructura básica de carpetas (src con controllers, db, routes, middleware, models, utils, otros). 
+
+7. Creamos módulo principal `index.js` 
+
+8. Creamos módulo ocultación archivos con `touch .gitignore`
+
+9. Configuramos variables de entorno en un archivo `.env`. 
+
+10. Creamos archivo de referencia `.env.copy`.
+ 
+11. Creamos Pool de conexiones en db/`getpool.js`
+
+12. Creamos la bd remoto a MySQL en db/`initDB.js`.
+
+13. Creamos middleware de JWT en middleware/`validateAuth.js`
+
+14. Creamos middleware de manejo de errores en middleware/`errorHandler.js` 
+
+15.Creamos helpers.
+
+16. Creamos schemas para validaciones de datos. 
+
+17. Creamos controlers para programar el funcionamiento de la app de notas.
+
+18. Creamos rutas/Endpoints (para los controllers).
+
+19. Configuramos endpoints en Postman (incluiremos el archivo para los compañeros).
+
+20. Incluimos archivo del postman en el repositorio ("blockDeNotas.postan_collection.son") .
+
 ## ENDPOINTS
 
 - **USUARIOS**
@@ -45,12 +65,12 @@ API de un bloc de notas con registro de usuarios y categorias de notas.
 
     - **POST** Crea una nota
     - **PUT** Modifica una nota
+    - **??** Elimina una nota
 
 
 - **CONSULTAS**
 
     - **GET** Categorias / busqueda por id 
-
 
     - **GET** Notas / req.query
     - **GET** Notas / Devuelve notas por tipología
@@ -81,14 +101,24 @@ API de un bloc de notas con registro de usuarios y categorias de notas.
   3) NOTA: crearla ✅
   4) NOTA: modificarla ✅
   5) NOTA: obtener detalle ✅
-  6) BUSQUEDA NOTAS:(4) ?
+  6) BUSQUEDA NOTAS:(4) ? 🟥
 */
-
-//FALTA REVISAR:
--Si tenemos todos los módulos necesarios
--.env y .envcopy
--Funciones de consultas notas
+   
+ //FALTA REVISAR:
+-Si tenemos todos los módulos necesarios (Primera revisión hecha)
+-Funciones de create,modify,delete categorias(OPCIONAL PERO SU CARPETA SERIA `categoryFunction`)
+-revisar imports de Controllers (Primera revisión hecha)
+- Terminar models.
+-Autenticación y Autorización:
+  Implementar el sistema completo de autenticación, incluida la gestión de sesiones, si es necesario.
+  Definir roles y permisos para diferentes tipos de usuarios y asegurarse de que las rutas estén protegidas adecuadamente.
 -Contraseñas**
--Errores
--Peticiones postman
+-Peticiones postman (Desarrollar pruebas unitarias y de integración para verificar que todas las funcionalidades funcionen como se espera.)
 -Comprobaciones de si funciona todo
+
+## Uso
+
+Para ejecutar el proyecto:
+
+```bash
+npm start
