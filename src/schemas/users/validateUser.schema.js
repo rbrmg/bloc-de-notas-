@@ -2,7 +2,7 @@
 
 //Importamos joi (validacion y errores personalizados)
 import joi from 'joi';
-import joiMsg from '../joi.error.messages.js';
+import * as joiMsg from '../joi.error.messages.js';
 
 const validateUserSchema = joi.object({
     registrationCode: joi.string()

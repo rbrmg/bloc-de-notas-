@@ -1,14 +1,15 @@
-//Módulo de funcionamiento de usuario
+//MÓDULO DE FUNCIONAMIENTO DE REGISTRO DE USUARIO
 
 // Importamos las funciones del usuario.
-import pool from '../db/getPool.js'; 
+import bcrypt from 'bcrypt'
+import pool from '../../../db/getPool.js'; 
 
-//Función regristramos el usuario
+// Función para registrar un nuevo usuario.
 const registerController = (req, res) => {
-  // Extraemos datos del cuerpo de la solicitud
+  // Extraemos datos del cuerpo de la solicitud.
   const { email, password, userName } = req.body;
 
-  // Validamos que proporciono los campos necesarios
+  // Validamos que se proporcionen todos los campos necesarios.
   if (!email || !password || !userName) {
     return res.status(400).send({
       status: 'error',
@@ -16,35 +17,49 @@ const registerController = (req, res) => {
     });
   }
 
-  // Insertamos el nuevo usuario en la bd
-  pool.query(
-    'INSERT INTO users (email, password, userName) VALUES (?, ?, ?)',
-    [email, password, userName],
-    (error, results) => {
-      if (error) {
-        console.error('Error al crear el usuario:', error);
-        return res.status(500).send({
-          status: 'error',
-          message: 'Error interno del servidor al crear el usuario.'
-        });
-      }
-
-      // Devolvemos respuesta exitosa
-      res.status(201).send({
-        status: 'ok',
-        message: 'Usuario creado exitosamente.',
-        userId: results.insertId  // ID del usuario recién creado
+  // Hasheamos la contraseña antes de almacenarla.
+  bcrypt.hash(password, 10, (err, hash) => {
+    if (err) {
+      console.error('Error al hashear la contraseña:', err);
+      return res.status(500).send({
+        status: 'error',
+        message: 'Error interno del servidor al hashear la contraseña.'
       });
     }
-  );
+
+    // Insertamos el nuevo usuario en la base de datos.
+    pool.query(
+      'INSERT INTO users (email, password, userName) VALUES (?, ?, ?)',
+      [email, hash, userName],
+      (error, results) => {
+        if (error) {
+          console.error('Error al crear el usuario:', error);
+          return res.status(500).send({
+            status: 'error',
+            message: 'Error interno del servidor al crear el usuario.'
+          });
+        }
+
+        // Devolvemos una respuesta exitosa.
+        res.status(201).send({
+          status: 'ok',
+          message: 'Usuario creado exitosamente.',
+          userId: results.insertId  // ID del usuario recién creado
+        });
+      }
+    );
+  });
 };
-/*const registerController = (req, res) => {
+
+//Exportamos funciones a rutas ( indexUserController.js, ira a user.routers.js)
+export default registerController ;
+
+
+/* EJEMPLO STEFANO
+const registerController = (req, res) => {
   // aqui me connecto al DB
   res.status(201).send({
     status: 'ok',
     message: 'Usuario creado',
   });
 };*/
-
-//exportamos funciones a rutas ( indexUserController.js, ira a user.routers.js)
-export { registerController };

@@ -1,6 +1,6 @@
 //MÓDULO DE MENSAJES PERSONALIDAZOS ERROR 
 
-const errorMsg = {
+export const errorMsg = {
     'any.required': 'El campo "{#key}" es requerido',
     'string.base': 'El valor de "{#key}" debe ser una cadena',
     'string.empty': 'El campo "{#key}" no debe estar vacío',
@@ -15,18 +15,18 @@ const errorMsg = {
     'object.unknown': 'No se permiten campos adicionales en este objeto',
 };
 
-const errorMsgUsername =  {
+export const errorMsgUsername =  {
     'string.pattern.base':
         'El campo "{#key}" no debe contener espacios en blanco.',
 };
 
-const errorMsgPassword = {
+export const errorMsgPassword = {
     'string.pattern.base':
         'La contraseña debe contener al menos una mayúscula, una minúscula, un número y un símbolo de puntuación para "{#key}"',
 };
 
-export default {
+/*export default {
     errorMsg,
     errorMsgUsername,
     errorMsgPassword
-};
+};*/

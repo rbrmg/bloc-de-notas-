@@ -1,4 +1,4 @@
-# APP DE NOTAS DE TEXTO
+# app_bloc_de_notas
 
 ## DESCRIPCIÓN
 Hemos desarrollado una aplicación para almacenar notas de texto tipo bloc.
@@ -15,15 +15,15 @@ Hemos desarrollado una aplicación para almacenar notas de texto tipo bloc.
 
 1. Creamos repositorio en github. 
 
-2. Clonamos repositorio de github en una carpeta nueva en el pc (app-notas-texto) con el comando .
+2. Clonamos repositorio de github en una carpeta nueva en el pc (app-notas-texto) con el comando `git clone` + `url de repositorio en github` .
    
 3. Iniciamos proyecto con el comando `npm init -y`.
    
-4. Instalamos dependencias con `npm install` ( + `express, mysql2, jsonwebtoken, dotenv, joi, bcryptjs`).
+4. Instalamos dependencias con `npm install` (+ `express, dotenv, mysql2, jsonwebtoken, bcryptjs, joi`).
    
 5. Creamos modulo README.md con `touch README.md` (Descripción app).
 
-6. Creamos estructura básica de carpetas (src con controllers, db, routes, middleware, models, utils, otros). 
+6. Creamos estructura básica de carpetas (). 
 
 7. Creamos módulo principal `index.js` 
 
@@ -31,7 +31,7 @@ Hemos desarrollado una aplicación para almacenar notas de texto tipo bloc.
 
 9. Configuramos variables de entorno en un archivo `.env`. 
 
-10. Creamos archivo de referencia `.env.copy`.
+10. Creamos archivo de referencia `.env.copy`.n
  
 11. Creamos Pool de conexiones en db/`getpool.js`
 
@@ -52,6 +52,18 @@ Hemos desarrollado una aplicación para almacenar notas de texto tipo bloc.
 19. Configuramos endpoints en Postman (incluiremos el archivo para los compañeros).
 
 20. Incluimos archivo del postman en el repositorio ("blockDeNotas.postan_collection.son") .
+
+
+## DEPENDENCIAS
+
+    - express           (Agrega los módulos package.json y package-lock.json)    (El primero!!)
+    - dotenv            (Acceder al archivo .env)
+    - mysql12           (Manejador la base de datos)
+    - jsonwebtoken      (Manejador el usuario)
+    - bcrypt            (Encriptador)
+    - joi               (Validador exquemas de datos)
+    
+    
 
 ## ENDPOINTS
 
@@ -122,3 +134,5 @@ Para ejecutar el proyecto:
 
 ```bash
 npm start
+
+

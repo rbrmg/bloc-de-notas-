@@ -34,7 +34,6 @@ const getPool = async () => {
         password: MYSQL_PASS,
         database: MYSQL_DB,
         timezone: "Z",
-        //METER UN CONSOLE.LOG (FALTANTE)
       });
     }
 
