@@ -1,7 +1,7 @@
 //Módulo de funcionamiento de consulta de listado categorias completo
 
 // Importamos las funciones del modelo consultas de notas
-import pool from '../db/getPool.js'; 
+import pool from '../../../db/getPool.js'; 
 
 //BUSQUEDA CATEGORIAS//
 //Función obtenemos listado de gategorias
@@ -39,7 +39,13 @@ const getCategoriesController = async (req, res) => {
       });
     }
   }
-  /*router.get("/notes", (req, res) => {
+ 
+  //exportamos funciones a rutas (entries.routes.js)
+  export { getCategoriesController };
+
+
+   /*EJEMPLO STEFANO
+   router.get("/notes", (req, res) => {
     // aqui me connecto al DB
     console.log(req.query);
     res.status(200).send({
@@ -48,6 +54,3 @@ const getCategoriesController = async (req, res) => {
       data: [],
     });
   });*/
-
-  //exportamos funciones a rutas (entries.routes.js)
-  export { getCategoriesController };

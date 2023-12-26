@@ -1,7 +1,7 @@
-//Módulo de funcionamiento de consultas de notas por detalle
+//MÓDULO DE FUNCIONAMIENTO DE CONSULTA DE NOTA POR DETALLE
 
 // Importamos las funciones del modelo de notas
-import pool from '../db/getPool.js'; 
+import pool from '../../../db/getPool.js'; 
 
 //CONSULTAS//
 //Función para obtener nota por detalle
@@ -59,4 +59,4 @@ const getNoteDetail = (req, res) => {
     });
   });*/
 
-export {getNoteDetail};
+export default getNoteDetail;

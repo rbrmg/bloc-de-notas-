@@ -1,7 +1,7 @@
-//Módulo de funcionamiento creación de notas 
+//MÓDULO DE FUNCIONAMIENTO DE CREACIÓN DE NOTAS
 
 // Importamos las funciones del modelo de notas
-import pool from '../db/getPool.js'; 
+import pool from '../../../db/getPool.js'; 
 
 //NOTAS//
 //Función creamos la nota
@@ -45,7 +45,14 @@ const createNote = (req, res) => {
     }
   );
 };
-/*router.post("/notes", (req, res) => {
+
+
+//exportamos funciones a rutas ( indexNoteController.js, ira a entries.routers.js)
+export default createNote ;
+
+
+/* EJEMPLO STEFANO
+router.post("/notes", (req, res) => {
   // aqui me connecto al DB
   res.status(201).send({
     status: "ok",
@@ -58,6 +65,3 @@ const createNote = (req, res) => {
     },
   });
 });*/
-
-//exportamos funciones a rutas ( indexNoteController.js, ira a entries.routers.js)
-export { createNote };

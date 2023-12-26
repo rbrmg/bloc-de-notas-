@@ -1,7 +1,7 @@
-//Módulo de funcionamiento modificación de notas 
+//MÓDULO DE FUNCIONAMIENTO DE MODIFICACIÑON DE NOTAS
 
 // Importamos las funciones del modelo de notas
-import pool from '../db/getPool.js'; 
+import pool from '../../../db/getPool.js'; 
 
 //NOTAS//
 //Función modificamos una nota
@@ -45,7 +45,12 @@ const updateNote = (req, res) => {
       }
     );
   };
-  /*router.put("/notes", (req, res) => {
+  
+//exportamos funciones a rutas ( indexNoteController.js, ira a entries.routers.js)
+export default updateNote ;
+
+ /* EJEMPLO STEFANO
+ router.put("/notes", (req, res) => {
     // aqui me connecto al DB
     res.status(200).send({
       status: "ok",
@@ -58,6 +63,3 @@ const updateNote = (req, res) => {
       },
     });
   });*/
-  
-//exportamos funciones a rutas ( indexNoteController.js, ira a entries.routers.js)
-export { updateNote };

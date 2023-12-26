@@ -1,7 +1,7 @@
-//Módulo de funcionamiento de consultas de notas por título
+//MÓDULO DE FINCIONAMIENTO DE CONSULTA DE NOTA POR TÍTULO
 
 // Importamos las funciones del modelo de notas
-import pool from '../db/getPool.js'; 
+import pool from '../../../db/getPool.js'; 
 
 //CONSULTAS//
 //Función para obtener nota por título
@@ -38,4 +38,4 @@ const getUserNotes = async (req, res) => {
     }
   };
   
-  export { getUserNotes };
+  export default getUserNotes ;

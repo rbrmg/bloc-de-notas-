@@ -2,7 +2,7 @@
 
 //Importamos joi (validacion y errores personalizados)
 import joi from 'joi';
-import joiErrorMessages from './joi.error.messages.js';
+import * as joiErrorMessages from './joi.error.messages.js';
 
 const imgSchema = joi.object({
     name: joi.string().required().messages(joiErrorMessages),

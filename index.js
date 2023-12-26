@@ -1,16 +1,18 @@
-//MÓDULO PRINCIPAL DE LA APP DE NOTAS
+//MÓDULO PRINCIPAL DEL PROYECTO
 
-// Importaciones de dependencias 
+
+//Import de dependencias y módulos propios
 import express from 'express';
-import cors from "cors";
-import dotenv from 'dotenv';
+import dotenv  from 'dotenv';
+import cors from 'cors';
 
-//Importaciones de módulos propios
-import validateAuth from './src/middleware/validateAuth.js'; //Validación del JWT
-import errorHandler from '../app-notas-texto/src/middleware/errorHandler.js'; //Gestión de errores
-import validateHelper from './src/helpers/validate.helper.js' // Gestión de errores
-import router from './src/routes/index.routes.js'; // Endpoints
-import {
+
+//Propios
+import validateAuth from '../app_bloc_de_notas/src/middleware/validateAuth.js';
+import errorHandler from '../app_bloc_de_notas/src/middleware/errorHandler.js';
+import validateHelperMiddleware from '../app_bloc_de_notas/src/helpers/validate.helper.js'
+import router from '../app_bloc_de_notas/src/routes/index.routes.js'; // Importamos rutas
+/*import {
     newUserSchema,
     editUserPasswordSchema,
     loginuserSchema,
@@ -22,24 +24,22 @@ import {
     errorMsg,
     errorMsgUsername,
     errorMsgPassword
-  } from './schemas';//Esquemas
-  
-dotenv.config(); //Configuración de variables de entorno
+  } from '../app_bloc_de_notas/src/schemas/indexSchemas.js';*/
 
-
+dotenv.config() //Configuración de variables de entorno (.env)
+const {PORT} = process.env 
 const app = express(); //Iniciamos la aplicación con Express
-const PORT = process.env.PORT || 3000;
 
 // Middlewares
 app.use(cors()); //Permitimos CORS
 app.use(express.json()); //Parseamos body de las solicitudes a JSON
 app.use(validateAuth);//Validación de JWT
-app.use(validateHelper);
+app.use(validateHelperMiddleware);
 
 // Rutas
 app.use(router);
 
-//Schemas
+/*//Schemas
 app.use(newUserSchema,
   editUserPasswordSchema,
   loginuserSchema,
@@ -50,7 +50,7 @@ app.use(newUserSchema,
   imgSchema,
   errorMsg,
   errorMsgUsername,
-  errorMsgPassword);
+  errorMsgPassword); */
 
 
 
@@ -58,5 +58,5 @@ app.use(errorHandler);//Manejo de errores (último!!)
 
 // Iniciamos el servidor
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  });

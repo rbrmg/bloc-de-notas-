@@ -2,9 +2,9 @@
 
 //Importamos módulos de Rutas
 import express from 'express';
-import userRoutes from './user.routes.js';
-import entriesRoutes from './entries.routes.js';
-import router from './auth.routes.js';
+import userRoutes from './user/user.routes.js';
+import entriesRoutes from './note/entries.routes.js';
+
 
 const router = express.Router();
 
