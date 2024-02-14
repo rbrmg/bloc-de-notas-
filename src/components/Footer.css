@@ -1,0 +1,29 @@
+/* Footer.css */
+.footer-container {
+    background-color: #54d1f0;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center;
+  }
+  
+  .footer-container p {
+    margin: 0;
+  }
+  
+  .github-link a {
+    color: white;
+    text-decoration: none;
+    margin-left: 5px;
+  }
+  
+  /* Estilos para el enlace de GitHub al pasar el ratón sobre él */
+  .github-link a:hover {
+    text-decoration: underline;
+  }
+  

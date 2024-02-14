@@ -1,0 +1,47 @@
+/* Header.css */
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px; /* Margen a ambos lados */
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  margin-top: 15px; /* Margen superior */
+  margin-left: 50px; /* Margen izquierdo */
+}
+
+.logo img {
+  max-width: 80px; /* Ancho máximo del logo */
+  height: auto; /* Ajusta automáticamente la altura para mantener la proporción */
+}
+
+.nav-link {
+  color: #00d0ff; /* Color del enlace */
+  text-decoration: none; /* Quita el subrayado predeterminado */
+}
+
+.login-link {
+  color: rgb(54, 61, 139); /* Color del enlace de login */
+  text-decoration: none; /* Quita el subrayado predeterminado */
+  margin-right: 10px; /* Espacio entre el enlace de login y el de register */
+}
+.login-link:hover {
+  color: #5aa2d6; /* Cambia el color del texto al pasar el ratón por encima */
+}
+
+
+.register-link {
+  color: rgb(54, 61, 139); /* Color del enlace de register */
+  text-decoration: none; /* Quita el subrayado predeterminado */
+  margin-right: 40px; /* Más margen a la derecha del enlace de register */
+}
+.register-link:hover {
+  color: #5aa2d6; /* Cambia el color del texto al pasar el ratón por encima */
+}

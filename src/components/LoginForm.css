@@ -1,0 +1,39 @@
+/* LoginForm.css */
+form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #e0e7e9; /* Cambia el color de fondo del formulario a rojo */
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: rgb(4, 0, 0); /* Cambia el color del texto a blanco */
+  }
+  
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #ff9900; /* Cambia el color de fondo del botón a azul */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block; /* Hace que el botón sea un bloque para centrarlo */
+    margin: 0 auto; /* Centra el botón horizontalmente */
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
